@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self'; object-src 'none';">
+  <link rel="stylesheet" href="popup.css">
+  <title>Watchdog</title>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <img class="brand-logo" src="icons/logo.svg" alt="" width="30" height="30">
+        <div class="brand-text">
+          <span class="brand-name">Watchdog</span>
+          <span class="brand-tag">Stay on-topic on YouTube</span>
+        </div>
+      </div>
+      <span id="status-pill" class="pill pill-off">Off</span>
+    </header>
+
+    <section class="card">
+      <label class="field-label" for="topic-input">What are you focusing on?</label>
+      <input
+        type="text"
+        id="topic-input"
+        placeholder="e.g. AWS certification, Python DSA, IELTS"
+        maxlength="100"
+        autocomplete="off"
+        spellcheck="false"
+      >
+
+      <div class="field-row">
+        <span class="field-label" id="sensitivity-label">Sensitivity</span>
+        <span id="sensitivity-hint" class="hint">Recommended</span>
+      </div>
+      <div class="segmented" role="radiogroup" aria-labelledby="sensitivity-label">
+        <button type="button" class="seg" role="radio" aria-checked="false" data-sensitivity="relaxed">Relaxed</button>
+        <button type="button" class="seg" role="radio" aria-checked="true" data-sensitivity="balanced">Balanced</button>
+        <button type="button" class="seg" role="radio" aria-checked="false" data-sensitivity="strict">Strict</button>
+      </div>
+
+      <button id="save-btn" class="btn-primary" type="button">Start focus session</button>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card rows">
+      <div class="row">
+        <div class="row-text">
+          <span class="row-title">Monitoring</span>
+          <span id="monitor-sub" class="row-sub">Off</span>
+        </div>
+        <label class="switch" for="focus-toggle" aria-label="Toggle monitoring">
+          <input type="checkbox" id="focus-toggle">
+          <span class="switch-track"></span>
+        </label>
+      </div>
+
+      <div class="row">
+        <div class="row-text">
+          <span class="row-title">Flag all Shorts</span>
+          <span class="row-sub">Remind me on every Short, without checking it</span>
+        </div>
+        <label class="switch" for="shorts-toggle" aria-label="Flag all Shorts">
+          <input type="checkbox" id="shorts-toggle">
+          <span class="switch-track"></span>
+        </label>
+      </div>
+
+      <div class="row" id="snooze-row" hidden>
+        <div class="row-text">
+          <span class="row-title">Snoozed</span>
+          <span id="snooze-sub" class="row-sub"></span>
+        </div>
+        <button id="resume-btn" class="btn-ghost" type="button">Resume</button>
+      </div>
+
+      <div class="row" id="allowed-row" hidden>
+        <div class="row-text">
+          <span class="row-title">Allowed channels</span>
+          <span id="allowed-sub" class="row-sub"></span>
+        </div>
+        <button id="clear-allowed-btn" class="btn-ghost" type="button">Clear</button>
+      </div>
+
+      <div class="row">
+        <div class="row-text">
+          <span class="row-title">On-device model</span>
+          <span id="model-sub" class="row-sub">Checking…</span>
+        </div>
+        <span id="model-dot" class="dot" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Video analysis runs on your device. Nothing about what you watch is sent anywhere.
+    </footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

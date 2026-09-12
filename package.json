@@ -1,0 +1,28 @@
+{
+  "name": "watchdog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Watchdog keeps you on-topic while studying on YouTube.",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "icons": "node scripts/make-icons.mjs",
+    "calibrate": "node scripts/calibrate.mjs",
+    "sweep": "node scripts/sweep.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "e2e:shorts": "node scripts/e2e-shorts.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/run-tests.mjs",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.326",
+    "esbuild": "^0.25.0",
+    "sharp": "^0.34.0",
+    "typescript": "^5.6.0"
+  }
+}

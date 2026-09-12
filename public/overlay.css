@@ -1,0 +1,212 @@
+/* Watchdog reminder. Lives inside a closed shadow root, so nothing here leaks into YouTube. */
+
+:host {
+  all: initial;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+  color: #e6e8ee;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.wd-backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 8, 12, 0.62);
+  backdrop-filter: blur(10px) saturate(0.8);
+  -webkit-backdrop-filter: blur(10px) saturate(0.8);
+  animation: wd-fade 180ms ease-out;
+}
+
+.wd-card {
+  width: min(480px, 100%);
+  padding: 26px 28px 20px;
+  background: #15171c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  animation: wd-rise 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* The card takes focus so Escape and Tab work; it is a container, not a control,
+   so it should not paint a focus ring of its own. The buttons keep theirs. */
+.wd-card:focus { outline: none; }
+
+.wd-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.wd-brand svg { width: 22px; height: 22px; border-radius: 6px; flex: none; }
+.wd-brand span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b90a0;
+}
+
+.wd-title {
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.25;
+  color: #f3f4f8;
+  margin-bottom: 8px;
+}
+
+.wd-body {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #a6abb8;
+  margin-bottom: 16px;
+}
+.wd-body strong { color: #e6e8ee; font-weight: 600; }
+
+.wd-video {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+.wd-video-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c8190;
+}
+.wd-video-title {
+  font-size: 13px;
+  color: #d5d8e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wd-quote {
+  margin: 0 0 22px;
+  padding: 2px 0 2px 14px;
+  border-left: 3px solid #6366f1;
+}
+.wd-quote blockquote {
+  font-size: 15px;
+  line-height: 1.55;
+  font-style: italic;
+  color: #e6e8ee;
+}
+.wd-quote figcaption {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8b90a0;
+}
+
+.wd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wd-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 11px 16px;
+  cursor: pointer;
+  max-width: 100%;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+.wd-btn:active { transform: translateY(1px); }
+.wd-btn:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; }
+
+.wd-btn-primary {
+  flex: 1 1 auto;
+  background: #6366f1;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wd-btn-primary:hover { background: #4f46e5; }
+
+.wd-btn-secondary {
+  background: transparent;
+  color: #c3c7d1;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.wd-btn-secondary:hover { background: rgba(255, 255, 255, 0.06); }
+
+.wd-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #7c8190;
+}
+
+.wd-link {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
+  color: #9aa0af;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.18);
+}
+.wd-link:hover { color: #e6e8ee; }
+.wd-link:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; border-radius: 3px; }
+
+.wd-sep { color: #4b5060; }
+
+.wd-hint {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #5f6473;
+}
+.wd-kbd {
+  font: 10.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 3px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: #8b90a0;
+}
+
+@keyframes wd-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes wd-rise {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wd-backdrop, .wd-card { animation: none; }
+}
+
+@media (max-width: 520px) {
+  .wd-card { padding: 22px 18px 16px; }
+  .wd-actions { flex-direction: column; }
+  .wd-hint { display: none; }
+}

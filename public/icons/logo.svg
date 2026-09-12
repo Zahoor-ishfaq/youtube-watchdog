@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Watchdog">
+  <defs>
+    <linearGradient id="wd-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#wd-bg)"/>
+  <!-- ears -->
+  <path fill="#ffffff" d="M47 38 Q26 43 23 67 Q21 88 35 95 Q45 99 48 88 Q43 77 43 63 L43 47 Z"/>
+  <path fill="#ffffff" d="M81 38 Q102 43 105 67 Q107 88 93 95 Q83 99 80 88 Q85 77 85 63 L85 47 Z"/>
+  <!-- gap carved between ears and head, so the silhouette stays readable at 16px -->
+  <path fill="url(#wd-bg)" d="M64 24 Q89 24 89 50 L89 68 Q89 85 79 94 Q72 100 64 100 Q56 100 49 94 Q39 85 39 68 L39 50 Q39 24 64 24 Z"/>
+  <!-- head, with eyes and nose knocked out -->
+  <path fill="#ffffff" fill-rule="evenodd" d="M64 28 Q85 28 85 50 L85 68 Q85 82 77 90 Q71 96 64 96 Q57 96 51 90 Q43 82 43 68 L43 50 Q43 28 64 28 Z M55 58 a5 5 0 1 0 0.1 0 Z M73 58 a5 5 0 1 0 0.1 0 Z M64 77 a7 5.5 0 1 0 0.1 0 Z"/>
+</svg>
