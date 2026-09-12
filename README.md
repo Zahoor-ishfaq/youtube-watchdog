@@ -18,7 +18,7 @@ nothing about what you watch ever leaves your machine.
 3. A local model scores how related they are to your topic.
 4. If it's off-topic, the video pauses and a card appears.
 
-![The reminder card over a YouTube video](https://raw.githubusercontent.com/Zahoor-ishfaq/youtube-watchdog/main/docs/images/card.png)
+![The reminder card over a YouTube video](https://raw.githubusercontent.com/Zahoor-ishfaq/youtube-watchdog/main/docs/images/overlay.png)
 
 The card gives you four ways out: go back to your topic, continue anyway, snooze for 15
 minutes, or permanently allow that channel. `Esc` dismisses it.
