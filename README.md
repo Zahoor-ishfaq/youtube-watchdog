@@ -1,6 +1,6 @@
 # Watchdog
 
-<img src="docs/images/logo.png" width="72" align="right" alt="">
+<img src="https://raw.githubusercontent.com/Zahoor-ishfaq/youtube-watchdog/main/docs/images/logo.png" width="72" align="right" alt="">
 
 A Chrome extension that notices when the YouTube video you're watching has drifted away from
 what you sat down to study, and shows a calm reminder instead of letting you disappear down
@@ -9,7 +9,7 @@ the recommendation hole.
 Relevance is judged **on your device** by a small language model. No API key, no server, and
 nothing about what you watch ever leaves your machine.
 
-![The Watchdog popup in three states](docs/images/popup.png)
+![The Watchdog popup in three states](https://raw.githubusercontent.com/Zahoor-ishfaq/youtube-watchdog/main/docs/images/popup.png)
 
 ## How it works
 
@@ -18,7 +18,7 @@ nothing about what you watch ever leaves your machine.
 3. A local model scores how related they are to your topic.
 4. If it's off-topic, the video pauses and a card appears.
 
-![The reminder card over a YouTube video](docs/images/reminder.png)
+![The reminder card over a YouTube video](https://raw.githubusercontent.com/Zahoor-ishfaq/youtube-watchdog/main/docs/images/reminder.png)
 
 The card gives you four ways out: go back to your topic, continue anyway, snooze for 15
 minutes, or permanently allow that channel. `Esc` dismisses it.
