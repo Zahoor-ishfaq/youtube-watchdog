@@ -1,5 +1,5 @@
 /**
- * Captures docs/images/reminder.png: the real reminder card, on a real YouTube
+ * Captures docs/images/card.png: the real reminder card, on a real YouTube
  * page, produced by the real extension. Not a mockup.
  *
  *   npm run build && node scripts/screenshot-reminder.mjs
@@ -31,7 +31,7 @@ if (!CHROME) {
 }
 
 const VIDEO = process.env.WATCHDOG_SHOT_VIDEO ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-const OUT = resolve('docs/images/reminder.png');
+const OUT = resolve('docs/images/card.png');
 const profile = mkdtempSync(join(tmpdir(), 'wd-shot-'));
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
