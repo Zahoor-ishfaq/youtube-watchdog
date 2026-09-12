@@ -157,4 +157,4 @@ Built with [Claude](https://claude.com/claude-code) as a coding assistant.
 
 ## Licence
 
-[GNU General Public License v3.0](LICENSE)
+[MIT](LICENSE)
