@@ -8,6 +8,7 @@
     "build": "node esbuild.config.mjs",
     "watch": "node esbuild.config.mjs --watch",
     "icons": "node scripts/make-icons.mjs",
+    "screenshots": "node scripts/screenshot-popup.mjs && node scripts/screenshot-reminder.mjs",
     "calibrate": "node scripts/calibrate.mjs",
     "sweep": "node scripts/sweep.mjs",
     "e2e": "node scripts/e2e.mjs",
