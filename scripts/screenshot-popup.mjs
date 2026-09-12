@@ -152,7 +152,9 @@ try {
     await send('Target.closeTarget', { targetId: t.targetId });
   }
 
-  // Compose the three panels onto one dark board.
+  // Compose the three panels onto one dark board. Kept at 900px wide:
+  // larger exports crossed a ~100 KB ceiling that blocked the image from
+  // loading on some networks.
   const pad = 18;
   const metas = await Promise.all(shots.map((s) => sharp(s.buf).metadata()));
   const width = metas[0].width;
@@ -169,7 +171,7 @@ try {
     .composite(shots.map((s, i) => ({ input: s.buf, left: pad + (width + pad) * i, top: pad })))
     .png({ compressionLevel: 9, palette: true })
     .toBuffer();
-  const resized = await sharp(out).resize({ width: 1400 }).png({ compressionLevel: 9, palette: true }).toBuffer();
+  const resized = await sharp(out).resize({ width: 900 }).png({ compressionLevel: 9, palette: true }).toBuffer();
   writeFileSync(resolve('docs/images/popup.png'), resized);
   console.log('wrote docs/images/popup.png');
 } catch (e) {
